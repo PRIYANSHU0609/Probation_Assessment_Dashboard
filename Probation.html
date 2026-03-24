@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>PROBATION ASSESSMENT REPORT</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+	<style>
+		h1 {
+			font-size: 26px;
+			text-align: center;
+			margin-top: 40px;
+			margin-bottom: 20px;
+		}
+
+		.panel-default>.panel-heading {
+			background: linear-gradient(135deg, #2340ff 1%, #7c21f5 100%);
+			color: #ffffff;
+			padding: 18px;
+		}
+
+		.panel {
+			box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, .40);
+		}
+
+		.panel-group .panel {
+			margin-bottom: 20px;
+			border: 1px solid #2340ff;
+		}
+
+		.panel-title {
+			font-size: 18px;
+		}
+
+		.panel-title a,
+		.panel-title a:hover,
+		.panel-title a:focus {
+			text-decoration: none;
+		}
+
+		.panel-body p {
+			font-size: 16px;
+		}
+
+		.assessment-label {
+			min-width: 160px;
+			/* ⬅ reduced from 220px */
+			font-weight: bold;
+			margin-right: 10px;
+		}
+
+		.assessment-row {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			margin-bottom: 15px;
+			padding-left: 15px;
+		}
+
+		.assessment-row .col-md-6 {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			/* ⬅ tightened space */
+		}
+
+		.row-box {
+			display: flex;
+			justify-content: space-between;
+			gap: 15px;
+			margin-bottom: 15px;
+		}
+
+		.box {
+			float: 1;
+		}
+
+		.btn-forward {
+			background: linear-gradient(135deg, #2340ff 1%, #7c21f5 100%);
+			color: #fff;
+			border: none;
+			padding: 8px 20px;
+			font-size: 15px;
+			border-radius: 5px;
+			float: right;
+			transition: 0.3s;
+		}
+
+		.btn-forward:hover {
+			opacity: 0.9;
+		}
+
+		.form-label {
+			font-weight: bold;
+			font-size: 14.5px;
+			margin-right: 10px;
+		}
+
+		.form-label strong {
+			font-weight: bold !important;
+		}
+
+		.radio-inline {
+			display: inline-flex;
+			align-items: center;
+			margin-right: 15px;
+			gap: 4px;
+		}
+
+		.radio-inline input[type="radio"] {
+			margin-top: 0;
+		}
+
+		textarea.form-control {
+			font-size: 14.5px;
+			resize: vertical;
+		}
+
+		.btn-primary {
+			background-color: #2340ff;
+			border: none;
+			padding: 8px 20px;
+			font-size: 15px;
+			color: #fff;
+			border-radius: 4px;
+			transition: 0.3s;
+		}
+
+		.btn-primary:hover {
+			opacity: 0.9;
+		}
+
+		/* .assessment-row {
+			margin-top: 8px;
+			margin-bottom: 8px;
+			padding-bottom: 10px;
+		} */
+
+		.assessment-label {
+			min-width: 220px;
+			font-weight: bold;
+		}
+
+		.radio-inline {
+			display: inline-flex;
+			align-items: center;
+			margin-right: 15px;
+			gap: 5px;
+		}
+
+		#reasonBox {
+			margin-top: 15px;
+		}
+
+		/* .recommendation-row {
+			gap: 10px
+		} */
+
+		.checkbox-inline {
+			display: inline-flex;
+			align-items: center;
+			font-weight: bold;
+			white-space: nowrap;
+		}
+
+		.review-heading {
+			font-size: 16px;
+			font-weight: bold;
+			margin-left: 15px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+
+		}
+
+		.half-width-input {
+			max-width: 400px;
+			width: 60%;
+		}
+
+		.btn-forward {
+			background-color: linear-gradient(135deg, #2340ff 1%, #7c21f5 100%);
+			color: #fff;
+			border: none;
+			padding: 8px 20px;
+			font-size: 15px;
+			border-radius: 5px;
+			float: right;
+			transition: 0.3s;
+			margin-top: 10px;
+		}
+
+		.btn-forward:hover {
+			opacity: 0.9;
+		}
+
+		.employee-form .btn-primary {
+			background-color: #5ccf15;
+			border-color: #18da79;
+			padding: 10px 20px;
+			font-weight: bold;
+			border-radius: 5px;
+			transition: background-color 0.3s ease;
+		}
+
+		.employee-form .btn-primary:hover {
+			background-color: #19c945;
+			border-color: #28c919;
+		}
+
+		#collapseTen .form-group {
+			margin-bottom: 20px;
+		}
+
+		#collapseTen .checkbox-inline {
+			font-weight: normal;
+			display: block;
+			margin-top: 10px;
+		}
+
+		#collapseTen .radio-inline {
+			margin-right: 15px;
+		}
+
+		#collapseTen .review-heading {
+			font-weight: bold;
+			font-size: 16px;
+			margin-top: 15px;
+			margin-bottom: 10px;
+		}
+
+
+
+
+		/* .assessment-row {
+			display: flex;
+			align-items: center;
+			gap: 60px;
+			flex-wrap: wrap;
+			padding-left: 15px;
+			margin-bottom: 20px;
+		} */
+
+		.assessment-block {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			white-space: nowrap;
+		}
+
+		.recommendation-title {
+			padding-left: 15px;
+			margin-top: 10px;
+			margin-bottom: 15px;
+			font-weight: bold;
+			font-size: 1px;
+		}
+
+		.form-group {
+			padding-left: 15px;
+		}
+
+		.checkbox-inline {
+			font-weight: bold;
+		}
+
+		.form-label {
+			font-weight: bold;
+			min-width: 180px;
+		}
+
+		.radio-inline {
+			margin-right: 15px;
+		}
+
+		.review-flex {
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: 15px;
+			padding-left: 15px;
+			margin-bottom: 15px;
+		}
+
+		.review-label {
+			font-size: 16px;
+			font-weight: bold;
+			padding: 15px;
+			display: block;
+			margin-bottom: 8px;
+		}
+
+		.review-radio {
+			display: flex;
+			gap: 15px;
+		}
+
+		.review-label {
+			display: flex;
+			font-weight: bold;
+			font-size: 16px;
+			padding-left: 15px;
+			margin-bottom: 4px;
+		}
+
+		.input-aligned {
+			width: 60%;
+			max-width: 400px;
+			margin-left: 15px;
+			font-size: 14.5px;
+		}
+
+		.form-group {
+			margin-bottom: 8px;
+		}
+
+		.form-control-sm {
+			font-size: 13px;
+			padding: 4px 8px;
+		}
+
+		.form-control-sm {
+			font-size: 13px;
+			padding: 4px 8px;
+		}
+
+		.d-flex {
+			display: flex;
+			align-items: center;
+		}
+
+		.ml-3 {
+			margin-left: 15px;
+		}
+
+		input[type="date"] {
+			max-width: 200px;
+		}
+	</style>
+
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1><strong>PROBATION ASSESSMENT REPORT</strong></h1>
+				<hr>
+			</div>
+
+			<div class="col-md-12">
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					<!-- pannel-1 -->
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingOne">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+									href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									EMPLOYEE DETAILS
+									<span class="icon pull-right">+</span>
+								</a>
+
+							</h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse" role="tabpanel"
+							aria-labelledby="headingOne">
+							<div class="panel-body">
+								<form class="employee-form">
+									<div class="row">
+										<div class="col-md-3">
+											<label for="name" class="form-label">Name:</label>
+											<input type="text" class="form-control" id="name">
+										</div>
+										<div class="col-md-3">
+											<label for="persNo" class="form-label">Person No.:</label>
+											<input type="text" class="form-control" id="persNo">
+										</div>
+										<div class="col-md-3">
+											<label for="designation" class="form-label">Designation:</label>
+											<input type="text" class="form-control" id="designation">
+										</div>
+										<div class="col-md-3">
+											<label for="dept" class="form-label">Dept./Section:</label>
+											<input type="text" class="form-control" id="dept">
+										</div>
+									</div>
+									<div class="row mb-3">
+										<div class="col-md-3">
+											<label for="payscale" class="form-label">Pay Scale:</label>
+											<input type="text" class="form-control" id="payscale">
+										</div>
+										<div class="col-md-3">
+											<label for="appointment" class="form-label">Date of appoint. to the
+												Grade:</label>
+											<input type="date" class="form-control" id="appointment">
+										</div>
+										<div class="col-md-4">
+											<label for="probationExpiry" class="form-label">Due date of expiry of the
+												probation period:</label>
+											<input type="date" class="form-control" id="probationExpiry">
+										</div>
+									</div>
+
+									<br>
+									<div>
+										<p><strong>Please let us have your recommendation on the initial/extended
+												probationary
+												period in the proforma below so as to reach us by
+											</strong>
+										</p>
+									</div>
+
+									<div class="row">
+										<div class="col-md-4">
+											<label for="hod">H.O.D :</label>
+											<input type="text" class="form-control" id="hod">
+										</div>
+										<div class="col-md-4">
+											<label for="reporting">Reporting :</label>
+											<input type="text" class="form-control" id="reporting">
+										</div>
+										<div class="col-md-4">
+											<label for="reviewing">Reviewing :</label>
+											<input type="text" class="form-control" id="reviewing">
+										</div>
+									</div>
+									<br>
+
+									<div class="row">
+										<div class="text-center">
+											<button type="submit" class="btn btn-primary">Submit</button>
+										</div>
+
+								</form>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- pannel-2 -->
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingTwo">
+					<h4 class="panel-title">
+						<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+							href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+							ASSESSMENT BY REPORTING OFFICER
+							<span class="icon pull-right">+</span>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+					<div class="panel-body">
+						<!--ASSESSMENT SECTION-->
+						<h4><strong>1. Assessment by reporting officer:</strong></h4>
+						<div class="row">
+							<div class="col-md-6">
+								<label><strong>(a)Performance:</strong></label>
+								<label class="radio-inline">
+									<input type="radio" name="performance" value="satisfactorily"
+										onclick="toggleReasonBox()">Satisfactory
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="performance" value="unsatisfactory"
+										onclick="toggleReasonBox()">Unsatisfactory
+								</label>
+							</div>
+							<div class="col-md-6">
+								<label><strong>(b) Jobknowledge:</strong></label>
+								<label class="radio-inline">
+									<input type="radio" name="jobKnowledge" value="satisfactorily"
+										onclick="toggleReasonBox()">Satisfactory
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="jobKnowledge" value="unsatisfactory"
+										onclick="toggleReasonBox()">Unsatisfactory
+								</label>
+							</div>
+
+						</div>
+						<!--row2-->
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-md-6 ">
+								<label><strong>(c) Conduct & Discipline:</strong></label>
+								<label class="radio-inline">
+									<input type="radio" name="conduct" value="satisfactorily"
+										onclick="toggleReasonBox()">Satisfactory
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="conduct" value="unsatisfactory"
+										onclick="toggleReasonBox()">Unsatisfactory
+								</label>
+							</div>
+							<div class="col-md-6">
+								<label><strong>(d) Attendance & Punctuality:</strong></label>
+								<label class="radio-inline">
+									<input type="radio" name="attendance" value="satisfactorily"
+										onclick="toggleReasonBox()">Satisfactory
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="attendance" value="unsatisfactory"
+										onclick="toggleReasonBox()">Unsatisfactory
+								</label>
+							</div>
+						</div>
+
+						<!--reason box-->
+						<div class="form-group" id="reasonBox" style="display: none; margin-top: 15px;">
+							<label><strong>In case of unsatisfactory report, please indicate specific
+									reason/reasons</strong></label>
+							<textarea class="form-control reason-input" rows="3"
+								placeholder="Enter reason(s) here...."></textarea>
+						</div>
+						<hr>
+
+						<!--recommendation section-->
+						<h4><strong>2. Recommendation</strong></h4>
+						<div class="form-group">
+							<div class="checkbox">
+								<label><input type="checkbox">Probation period completed satisfactory.
+								</label>
+							</div>
+							<div class="checkbox">
+								<label><input type="checkbox">Probation may be extended by 3
+									months.</label>
+							</div>
+							<div class="checkbox">
+								<label><input type="checkbox">His/Her services have been
+									found
+									unsatisfactory &amp; his/her employee.</label>
+							</div>
+						</div>
+
+						<!--forword button-->
+						<div class="form-group text-right">
+							<button type="button" class="btn btn-forward">Forward</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+			<!-- pannel-3 -->
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingThree">
+					<h4 class="panel-title">
+						<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+							href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							REMARK OF THE REVIEWING OFFICER
+							<span class="icon pull-right">+</span>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+					<div class="panel-body">
+						<div class="form-group review-flex">
+							<label class="review-label"><strong>1. I agree/disagree to the recommendation of the
+									Reporting officer:</strong></label>
+							<div class="review-radio">
+								<label class="radio-inline">
+									<input type="radio" name="reviewAgree" value="agree">Agree
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="reviewAgree" value="disagree">Disagree
+								</label>
+							</div>
+						</div>
+						<!--2.reasons for disagreement...-->
+						<div class="form-group">
+							<label class="review-label"><strong>2. Reason for disagreement, if
+									any:</strong></label>
+							<input type="text" class="form-control input-aligned"
+								placeholder="Enter reason if you disagree">
+						</div>
+
+						<!--3-->
+						<div class="form-group">
+							<label class="review-label"><strong>3. Specific recommendation:</strong></label>
+							<input type="text" class="form-control input-aligned"
+								placeholder="Enter reason if you disagree">
+						</div>
+
+						<div class="button-container">
+							<button type="button" class="btn-forward">Forward</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- pannel-4 -->
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingOne">
+					<h4 class="panel-title">
+						<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+							href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+							HOD APPROVING
+							<span class="icon pull-right">+</span>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+					<div class="panel-body">
+
+
+						<form id="approvalForm" onsubmit="return validateForm()">
+							<!-- Agree/Disagree radio buttons -->
+							<div style="text-align: left; margin-top: 10px;">
+								<label>
+									<input type="radio" name="hodApproval" value="agree"> Agree
+								</label>
+								<label>
+									<input type="radio" name="hodApproval" value="disagree"> Disagree
+								</label>
+							</div>
+
+							<p style="text-align: left;">Remarks:
+							<p>
+
+							<div style="text-align: left;">
+								<textarea id="hodObservations" name="hodObservations" rows="4"
+									style="width: 50%;"></textarea>
+							</div>
+							<div class="button-container">
+								<button type="button" class="btn-forward">Forward</button>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+			<!-- pannel-5 -->
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingFive">
+					<h4 class="panel-title">
+						<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+							href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+							DISCIPLINARY CELL APPROVING
+							<span class="icon pull-right">+</span>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+					<div class="panel-body">
+						<form>
+
+							<!--row1 Passport-->
+							<div class="row row-box">
+								<div class="col-md-4">
+									<label class="form-label">Passport Type:</label>
+									<select class="form-control">
+										<option>New Passport</option>
+										<option>Renewal of Passport</option>
+									</select>
+								</div>
+								<div class="col-md-4">
+									<label class="form-label">Name of Employee:</label>
+									<input type="text" class="form-control">
+								</div>
+								<div class="col-md-4">
+									<label class="form-label">Personal No.:</label>
+									<input type="text" class="form-control">
+								</div>
+							</div>
+
+							<!-- row2 Suspension -->
+							<div class="form-group row-box">
+								<label class="form-label col-md-4">Whether under suspension?</label>
+								<div class="col-md-8 d-flex align-items-center">
+									<label class="radio-inline">
+										<input type="radio" name="suspension"
+											onclick="toggleField('suspensionField', true)"> Yes
+									</label>
+									<label class="radio-inline">
+										<input type="radio" name="suspension"
+											onclick="toggleField('suspensionField', false)"> No
+									</label>
+									<div id="suspensionField" class="d-flex ml-3" style="display:none; gap: 10px;">
+										<input type="date" class="form-control form-control-sm" style="width: 150px;">
+										<input type="text" class="form-control form-control-sm" style="width: 250px;"
+											placeholder="Reason for Suspension">
+									</div>
+								</div>
+							</div>
+
+							<!-- row3 Chargesheet -->
+							<div class="form-group row-box">
+								<label class="form-label col-md-4">Whether Chargesheet issued and disciplinary
+									proceeding pending?</label>
+								<div class="col-md-8 d-flex align-items-center">
+									<label class="radio-inline">
+										<input type="radio" name="chargesheet"
+											onclick="toggleField('chargesheetField', true)"> Yes
+									</label>
+									<label class="radio-inline">
+										<input type="radio" name="chargesheet"
+											onclick="toggleField('chargesheetField', false)"> No
+									</label>
+									<div id="chargesheetField" class="d-flex ml-3" style="display:none; gap: 10px;">
+										<input type="date" class="form-control form-control-sm" style="width: 150px;">
+										<input type="text" class="form-control form-control-sm" style="width: 250px;"
+											placeholder="Charges in Brief">
+									</div>
+								</div>
+							</div>
+
+							<!-- row4 Investigation -->
+							<div class="form-group row-box">
+								<label class="form-label col-md-4">Whether any investigation/proceedings pending
+									by CBI or other agency?</label>
+								<div class="col-md-8 d-flex align-items-center">
+									<label class="radio-inline">
+										<input type="radio" name="investigation"
+											onclick="toggleField('investigationField', true)"> Yes
+									</label>
+									<label class="radio-inline">
+										<input type="radio" name="investigation"
+											onclick="toggleField('investigationField', false)"> No
+									</label>
+									<div id="investigationField" class="d-flex ml-3" style="display:none; gap: 10px;">
+										<input type="text" class="form-control form-control-sm" style="width: 250px;"
+											placeholder="Charges in Brief">
+									</div>
+								</div>
+							</div>
+
+							<!-- row5 Rules/Provisions -->
+							<div class="form-group row-box">
+								<label class="form-label col-md-4">Rules/Provisions under which information is
+									required:</label>
+								<div class="col-md-8">
+									<input type="text" class="form-control form-control-sm" style="width: 250px;"
+										placeholder="Enter rules or provisions...">
+								</div>
+							</div>
+
+							<!-- Forward Button -->
+							<div class="form-group text-right">
+								<button type="button" class="btn btn-forward">Forward</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- pannel-6 -->
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingSix">
+					<h4 class="panel-title">
+						<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+							href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+							UNIT VIGILANCE CELL
+							<span class="icon pull-right">+</span>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+					<div class="panel-body">
+						<form class="employee-form">
+							<div class="row mb-3">
+								<div class="col-md-3">
+									<label for="name" class="form-label">Name of the officer(in full):</label>
+									<input type="text" class="form-control" id="name"
+										placeholder="Employee's full name">
+								</div>
+								<div class="col-md-3">
+									<label for="Fname" class="form-label">Father's name:</label>
+									<input type="text" class="form-control" id="Fname" placeholder="Father's name">
+								</div>
+								<div class="col-md-3">
+									<label for="birth" class="form-label">Date of Birth:</label>
+									<input type="date" class="form-control" id="birth">
+								</div>
+								<div class="col-md-3">
+									<label for="retire" class="form-label">Date of Retirement:</label>
+									<input type="date" class="form-control" id="retire">
+								</div>
+							</div><br>
+
+							<div class="row mb-3">
+								<div class="col-md-3">
+									<label for="entry" class="form-label">Date of Entry into Service:</label>
+									<input type="date" class="form-control" id="entry">
+								</div>
+								<div class="col-md-4">
+									<label for="belongs" class="form-label">Service to which the officer
+										belongs:</label>
+									<input type="text" class="form-control" id="belongs">
+								</div>
+								<div class="col-md-4">
+									<label for="Position" class="form-label">Position held(during ten preceeding
+										years):</label>
+									<input type="text" class="form-control" id="Position">
+								</div>
+							</div>
+						</form><br>
+
+						<div class="row" style="margin-bottom: 15px;">
+							<div class="col-md-12 d-flex align-items-center flex-wrap"
+								style="gap: 10px; padding-left: 15px;">
+								<label class="form-label mb-0" style="min-width: 370px;">
+									Is any action contemplated against the officer/employee as on date?
+								</label>
+
+								<label class="radio-inline mb-0">
+									<input type="radio" name="action" onclick="toggleField('actionField',true)">Yes
+								</label>
+								<label class="radio-inline mb-0">
+									<input type="radio" name="action" onclick="toggleField('actionField',false)">No
+								</label>
+								<div id="actionField" class="d-flex align-items-center"
+									style="display: none;gap: 10px;">
+									<input type="text" class="form-control form-control-sm" style="width: 150px;"
+										placeholder="Remarks">
+									<input type="text" class="form-control form-control-sm" style="width: 150px;"
+										placeholder="Details">
+
+								</div>
+
+							</div>
+						</div>
+
+
+						<form class="employee-form">
+							<div class="row">
+								<div class="col-md-12 text-right">
+									<button type="button" class="btn btn-forward">Forward</button>
+								</div>
+							</div>
+						</form>
+
+					</div><br>
+
+				</div>
+			</div>
+			<!-- pannel-7 -->
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingSeven">
+					<h4 class="panel-title">
+						<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+							href="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+							CORPORATE VIGILANCE CELL
+							<span class="icon pull-right">+</span>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+					<div class="panel-body">
+
+
+						<form id="approvalForm" onsubmit="return validateForm()">
+							<!-- Agree/Disagree radio buttons -->
+							<div style="text-align: left; margin-top: 10px;">
+								<label>
+									<input type="radio" name="hodApproval" value="agree"> Agree
+								</label>
+								<label>
+									<input type="radio" name="hodApproval" value="disagree"> Disagree
+								</label>
+							</div>
+
+							<p style="text-align: left;">Remarks:
+							<p>
+
+							<div style="text-align: left;">
+								<textarea id="hodObservations" name="hodObservations" rows="4"
+									style="width: 50%;"></textarea>
+							</div>
+							<div class="button-container">
+								<button type="button" class="btn-forward">Forward</button>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+			<!-- pannel-8 -->
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingEight">
+					<h4 class="panel-title">
+						<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+							href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+							VIGILANCE HOD
+							<span class="icon pull-right">+</span>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+					<div class="panel-body">
+
+
+						<form id="approvalForm" onsubmit="return validateForm()">
+							<!-- Agree/Disagree radio buttons -->
+							<div style="text-align: left; margin-top: 10px;">
+								<label>
+									<input type="radio" name="hodApproval" value="agree"> Agree
+								</label>
+								<label>
+									<input type="radio" name="hodApproval" value="disagree"> Disagree
+								</label>
+							</div>
+
+							<p style="text-align: left;">Remarks:
+							<p>
+
+							<div style="text-align: left;">
+								<textarea id="hodObservations" name="hodObservations" rows="4"
+									style="width: 50%;"></textarea>
+							</div>
+							<div class="button-container">
+								<button type="button" class="btn-forward">Forward</button>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+			<!-- pannel-9 -->
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingNine">
+					<h4 class="panel-title">
+						<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+							href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+							CVO
+							<span class="icon pull-right">+</span>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
+					<div class="panel-body">
+
+
+						<form id="approvalForm" onsubmit="return validateForm()">
+							<!-- Agree/Disagree radio buttons -->
+							<div style="text-align: left; margin-top: 10px;">
+								<label>
+									<input type="radio" name="hodApproval" value="agree"> Agree
+								</label>
+								<label>
+									<input type="radio" name="hodApproval" value="disagree"> Disagree
+								</label>
+							</div>
+
+							<p style="text-align: left;">Remarks:
+							<p>
+
+							<div style="text-align: left;">
+								<textarea id="hodObservations" name="hodObservations" rows="4"
+									style="width: 50%;"></textarea>
+							</div>
+							<div class="button-container">
+								<button type="button" class="btn-forward">Forward</button>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+			<!-- pannel-10 -->
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingTen">
+					<h4 class="panel-title">
+						<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+							href="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+							CORPORATE HRD DEPARTMENT
+							<span class="icon pull-right">+</span>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseTen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTen">
+					<div class="panel-body">
+						<div class="assessment-row">
+							<div class="assessment-block" style="min-width: 400px;"><strong>1. Probation
+									Report</strong>
+								<label class="radio-inline" style="margin-left: 10px;">
+									<input type="radio" name="probationRadio">Satisfactory
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="probationRadio">Unsatisfactory
+								</label>
+							</div>
+
+
+							<div class="assessment-block">
+								<strong>2. Character & Antecedents verification Report</strong>
+								<label class="radio-inline" style="margin-left: 10px;">
+									<input type="radio" name="characterRadio">Satisfactory
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="probationRadio">Unsatisfactory
+								</label>
+							</div>
+						</div>
+						<!--recommendation-->
+						<h5 style="padding-left: 15px; margin-top: 10px; margin-bottom: 15px;">
+							<strong>2.Recommendation:</strong>
+						</h5>
+						<div class="form-group" style="padding-left: 15px;">
+							<div class="radio">
+								<label>
+									<input type="radio" name="recommendOption" value="confirm"
+										onclick="showOptionInput('confirm')">
+									1. Probation may be closed as he may be confirmed w.e.f.
+								</label>
+							</div>
+							<div id="confirmInput" class="option-input" style="display: none;">
+								<input type="date" class="form-control input-aligned"
+									placeholder="select confirmation date">
+							</div>
+
+
+							<div class="radio">
+								<label>
+									<input type="radio" name="recommendOption" value="extend"
+										onclick="showOptionInput('extend')">
+									2. Probation may be extended by 3 months.
+								</label>
+							</div>
+							<div id="extendInput" class="option-input" style="display: none;">
+								<input type="text" class="form-control input-aligned"
+									placeholder="Enter reason for extension">
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="recommendOption" value="terminate"
+										onclick="showOptionInput('terminate')">
+									Services may be terminateReason on account of unsatisfactory probation
+									performance during
+									extended/probation period.
+								</label>
+							</div>
+							<div id="terminateInput" class="option-input" style="display: none;">
+								<input type="text" class="form-control input-aligned"
+									placeholder="Enter reason for termination">
+							</div>
+						</div>
+
+
+						<!-- <div id="confirmInput" class="option-input" style="display: none;">
+									<input type="date" class="form-control input-aligned" placeholder="select confirmation date"> 
+								 </div>
+								 <div id="extendInput" class="option-input" style="display: none;">
+									<input type="text" class="form-control input-aligned" placeholder="Enter reason for extension"> 
+								 </div>
+								 <div id="terminateInput" class="option-input" style="display: none;">
+									<input type="text" class="form-control input-aligned" placeholder="Enter reason for termination"> 
+								 </div> -->
+
+
+
+						<!-- <input type="text" id="extendReason" class="form-control half-width-input"
+										style="display: none; margin-top: 10px;"
+										placeholder="Enter reason for extension">
+
+								</div>
+								<div class="form-group">
+									<label class="checkbox-inline">
+										<input type="checkbox" id="terminateCheckbox" onclick="toggleTerminateInput()">
+										3. Services may be terminateReason on account of unsatisfactory probation
+										performance during
+										extended/probation period.
+									</label>
+									<input type="text" id="terminateReason" class="form-control half-width-input"
+										style="display: none; margin-top: 10px;"
+										placeholder="Enter reason for termination">
+								</div> -->
+
+						<div class="form-group text-right">
+							<button type="button" class="btn btn-forward">Forward</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script>
+
+				// $(document).ready(function () {
+				// 	// Change icon on collapse show/hide
+				// 	$('#accordion').on('hide.bs.collapse show.bs.collapse', function (e) {
+				// 		$(e.target).prev('.panel-heading').find('.icon')
+				// 			.text(function (_, value) {
+				// 				return value === '+' ? '−' : '+';
+				// 			});
+				// 	});
+				// });
+
+				$(document).ready(function () {
+					// Set all icons to "+"
+					$('.panel .icon').text('+');
+
+					// Collapse event handlers for each panel
+					$('.panel-collapse').on('show.bs.collapse', function () {
+						$(this).siblings('.panel-heading').find('.icon').text('−');
+					});
+
+					$('.panel-collapse').on('hide.bs.collapse', function () {
+						$(this).siblings('.panel-heading').find('.icon').text('+');
+					});
+				});
+
+
+
+				function toggleReasonBox() {
+					const anyUnsat = [...document.querySelectorAll('input[type="radio"]')]
+						.some(r => r.checked && r.value.toLowerCase() === 'unsatisfactory');
+					document.getElementById('reasonBox').style.display = anyUnsat ? 'block' : 'none';
+				}
+
+				function toggleConfirmDate() {
+					const confirm = document.getElementById('confirmCheckbox');
+					const date = document.getElementById('confirmDate');
+					if (confirm && date) {
+						date.style.display = confirm.checked ? 'block' : 'none';
+					}
+				}
+				function toggleExtendInput() {
+					const ext = document.getElementById('extendCheckbox');
+					const box = document.getElementById('extendReason');
+					if (ext && box) {
+						box.style.display = ext.checked ? 'block' : 'none';
+					}
+				}
+				function toggleTerminateInput() {
+					const term = document.getElementById('terminateCheckbox');
+					const reason = document.getElementById('terminateReason');
+					if (term && reason) {
+						reason.style.display = term.checked ? 'block' : 'none';
+					}
+				}
+
+
+
+				function showOptionInput(option) {
+					document.getElementById('confirmInput').style.display = 'none';
+					document.getElementById('extendInput').style.display = 'none';
+					document.getElementById('terminateInput').style.display = 'none';
+
+
+					if (option === 'confirm') {
+						document.getElementById('confirmInput').style.display = 'block';
+					} else if (option === 'extend') {
+						document.getElementById('extendInput').style.display = 'block';
+					} else if (option === 'terminate') {
+						document.getElementById('terminateInput').style.display = 'block';
+					}
+				}
+
+				function toggleField(id, show) {
+					document.getElementById(id).style.display = show ? 'flex' : 'none';
+				}
+				function toggleSuspension(show) {
+					document.getElementById('suspensionDetails').style.display = show ? 'block' : 'none';
+				}
+				function toggleChargesheet(show) {
+					document.getElementById('chargesheetDetails').style.display = show ? 'block' : 'none';
+				}
+				function toggleInvestigation(show) {
+					document.getElementById('investigationDetails').style.display = show ? 'block' : 'none';
+				}
+				function toggleInvestigation(show) {
+					document.getElementById('actionDetails').style.display = show ? 'block' : 'none';
+				}
+
+
+				function toggleField(id, show) {
+					document.getElementById(id).style.display = show ? 'flex' : 'none';
+				}
+
+
+
+			</script>
+
+
+
+
+
+</body>
+
+</html>
